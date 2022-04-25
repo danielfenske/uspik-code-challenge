@@ -9,7 +9,7 @@ const selectMessage = require('../modules/selectMessage');
 // personalizeMessage changes variables of message template to reflect guests' stay
 const personalizeMessage = require('../modules/personalizeMessage');
 
-// GET
+// GET message for given guest id
 router.get('/:id', async (req, res) => {
 
     let guestId = req.params.id;
@@ -21,8 +21,8 @@ router.get('/:id', async (req, res) => {
         JOIN "reservations" ON "guests"."id" = "reservations"."guestId"
         JOIN "companies" ON "companies"."id" = "reservations"."companyId" WHERE "guests"."id" = $1;`, [guestId]);
 
+    // 'guestInformation' represents all information related to the guest. datatype is an object
     const guestInformation = guestQuery.rows[0];
-
 
     // selects all message templates from DB (array)
     const messageQuery = await pool.query(`SELECT * FROM "messageTemplates";`);
@@ -34,7 +34,7 @@ router.get('/:id', async (req, res) => {
     // 'personalizedMessage' represents the selectedMessage including guest information
     let personalizedMessage = personalizeMessage(selectedMessage, guestInformation);
 
-    res.send(personalizedMessage)
+    res.send(personalizedMessage);
 });
 
 module.exports = router;
