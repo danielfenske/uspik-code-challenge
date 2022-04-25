@@ -4,8 +4,11 @@ function personalizeMessage(selectedMessage, guestInformation) {
 
     let personalizedMessage = selectedMessage;
 
+    // 'determineTimeOfDay' is a helper function that returns greeting text relevant to the guest's check-in time
+        // ex: 'Good morning'
     let greetingText = determineTimeOfDay(guestInformation.startTimestamp);
 
+    // the four lines below replace variables within the template with information relevant to the guest
     personalizedMessage = personalizedMessage.replaceAll('#greeting', greetingText);
     personalizedMessage = personalizedMessage.replaceAll('#firstName', guestInformation.firstName);
     personalizedMessage = personalizedMessage.replaceAll('#companyName', guestInformation.companyName);
