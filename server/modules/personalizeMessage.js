@@ -4,10 +4,10 @@ function personalizeMessage(selectedMessage, guestInformation) {
 
     let personalizedMessage = selectedMessage;
 
-    personalizedMessage = personalizedMessage.replace('#greeting', 'Good morning');
-    personalizedMessage = personalizedMessage.replace('#firstName', guestInformation.firstName);
-    personalizedMessage = personalizedMessage.replace('#companyName', guestInformation.companyName);
-    personalizedMessage = personalizedMessage.replace('#roomNumber', guestInformation.roomNumber);
+    personalizedMessage = personalizedMessage.replaceAll('#greeting', 'Good morning');
+    personalizedMessage = personalizedMessage.replaceAll('#firstName', guestInformation.firstName);
+    personalizedMessage = personalizedMessage.replaceAll('#companyName', guestInformation.companyName);
+    personalizedMessage = personalizedMessage.replaceAll('#roomNumber', guestInformation.roomNumber);
 
     return personalizedMessage;
 }

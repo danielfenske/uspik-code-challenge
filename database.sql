@@ -64,5 +64,4 @@ SELECT * FROM "messageTemplates";
 
 SELECT * FROM "guests"
 JOIN "reservations" ON "guests"."id" = "reservations"."guestId"
-JOIN "companies" ON "companies"."id" = "reservations"."companyId"
-GROUP BY "guests"."firstName", "reservations"."roomNumber", "companies"."companyName";
+JOIN "companies" ON "companies"."id" = "reservations"."companyId" WHERE "guests"."id" = 1;
